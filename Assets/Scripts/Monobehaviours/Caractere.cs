@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Caractere : MonoBehaviour
 {
-    public int PontosDano;
-    public int MaxPontosdano;
+    public PontosDano pontosDano; // Valor do objeto script
+    public float inicioPontosDano; // Valor minimo inicial de "saúde" do Player
+    public float maxPontosDano; // Valor máximo permitido de "saúde" do Player
 }

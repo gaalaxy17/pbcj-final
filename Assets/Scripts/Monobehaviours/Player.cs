@@ -4,33 +4,54 @@ using UnityEngine;
 
 public class Player : Caractere
 {
+    public Inventario inventarioPrefab; // Referencia ao objeto prefab criado do Inventario
+    Inventario inventario;
+    public HealthBar HealthBarPrefab; // Referencia ao objeto prefab criado da HealthBar
+    HealthBar healthBar;
+
+    private void Start()
+    {
+        pontosDano.valor = inicioPontosDano;
+        healthBar = Instantiate(HealthBarPrefab);
+        healthBar.caractere = this;
+        inventario = Instantiate(inventarioPrefab);
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Coletavel"))
         {
-            collision.gameObject.SetActive(false);
-            Item danoObjeto = collision.gameObject.GetComponent<Consumable>().item;
-            if(danoObjeto != null)
+            Item DanoObjeto = collision.gameObject.GetComponent<Consumable>().item;
+            if(DanoObjeto != null)
             {
-                print("Acertou: " + danoObjeto.NomeObjeto);
-                switch (danoObjeto.tipoItem)
+                bool deveDesaparecer = false;
+                switch (DanoObjeto.tipoItem)
                 {
                     case Item.TipoItem.MOEDA:
+                        deveDesaparecer = inventario.AddItem(DanoObjeto);
                         break;
                     case Item.TipoItem.HEALTH:
-                        AjusteDanoObjeto(danoObjeto.quantidade);
+                        deveDesaparecer = AjusteDanoObjeto(DanoObjeto.quantidade);
                         break;
                     default:
                         break;
                 }
-                collision.gameObject.SetActive(false);
+                if (deveDesaparecer)
+                {
+                    collision.gameObject.SetActive(false);
+                }
             }
         }
     }
 
-    public void AjusteDanoObjeto(int quantidade)
+    public bool AjusteDanoObjeto(int quantidade)
     {
-        PontosDano = PontosDano + quantidade;
-        print("Ajuste por: " + quantidade + ". Novo valor = " + PontosDano);
+        if(pontosDano.valor < maxPontosDano)
+        {
+            pontosDano.valor = pontosDano.valor + quantidade;
+            print("Ajustando PD por: " + quantidade + ". Novo valor = " + pontosDano.valor);
+            return true;
+        }
+        return false;
     }
 }
