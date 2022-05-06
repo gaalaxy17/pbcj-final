@@ -4,17 +4,55 @@ using UnityEngine;
 
 public class Player : Caractere
 {
-    public Inventario inventarioPrefab; // Referencia ao objeto prefab criado do Inventario
+    public Inventario InventarioPrefab; // Referencia ao objeto prefab criado do Inventario
     Inventario inventario;
     public HealthBar HealthBarPrefab; // Referencia ao objeto prefab criado da HealthBar
     HealthBar healthBar;
+
+    public PontosDano pontosDano; // Valor da "saúde" do objeto
 
     private void Start()
     {
         pontosDano.valor = inicioPontosDano;
         healthBar = Instantiate(HealthBarPrefab);
         healthBar.caractere = this;
-        inventario = Instantiate(inventarioPrefab);
+        inventario = Instantiate(InventarioPrefab);
+    }
+
+    public override IEnumerator DanoCaractere(int dano, float intervalo)
+    {
+        while (true)
+        {
+            pontosDano.valor = pontosDano.valor - dano;
+            if(pontosDano.valor <= float.Epsilon)
+            {
+                KillCaractere();
+                break;
+            }
+            if(intervalo > float.Epsilon)
+            {
+                yield return new WaitForSeconds(intervalo);
+            }
+            else
+            {
+                break;
+            }
+        }
+    }
+
+    public override void KillCaractere()
+    {
+        base.KillCaractere();
+        Destroy(healthBar.gameObject);
+        Destroy(inventario.gameObject);
+    }
+
+    public override void ResetCaractere()
+    {
+        inventario = Instantiate(InventarioPrefab);
+        healthBar = Instantiate(HealthBarPrefab);
+        healthBar.caractere = this;
+        pontosDano.valor = inicioPontosDano;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
