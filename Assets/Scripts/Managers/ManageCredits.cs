@@ -18,9 +18,15 @@ public class ManageCredits : MonoBehaviour
         
     }
 
-    /* Carrega a cena principal do jogo */
+    /* Carrega o menu do jogo */
     public void StartMenuScene()
     {
         SceneManager.LoadScene("Lab5_start");
+    }
+
+    /* Sai do jogo */
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 }
