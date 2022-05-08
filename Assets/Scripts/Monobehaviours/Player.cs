@@ -10,16 +10,22 @@ using UnityEngine.SceneManagement;
 public class Player : Caractere
 {
     public Inventario InventarioPrefab; // Referencia ao objeto prefab criado do Inventario
-    Inventario inventario; // Instancia do inventario
+    public Inventario inventario; // Instancia do inventario
     public HealthBar HealthBarPrefab; // Referencia ao objeto prefab criado da HealthBar
-    HealthBar healthBar; // Instancia da healthbae
+    public HealthBar healthBar; // Instancia da healthbae
 
     public PontosDano pontosDano; // Valor da "sa�de" do objeto
 
     /* Start is called before the first frame update */
     private void Start()
     {
-        pontosDano.valor = inicioPontosDano;
+        if (PlayerPrefs.HasKey("health")) {
+            pontosDano.valor = PlayerPrefs.GetFloat("health");
+        }
+        else
+        {
+            pontosDano.valor = inicioPontosDano;
+        }
         healthBar = Instantiate(HealthBarPrefab);
         healthBar.caractere = this;
         inventario = Instantiate(InventarioPrefab);
@@ -53,6 +59,7 @@ public class Player : Caractere
         base.KillCaractere();
         Destroy(healthBar.gameObject);
         Destroy(inventario.gameObject);
+        PlayerPrefs.DeleteKey("health");
         SceneManager.LoadScene("Lab5_defeat");
     }
 
@@ -78,6 +85,15 @@ public class Player : Caractere
                 {
                     case Item.TipoItem.MOEDA:
                         deveDesaparecer = inventario.AddItem(DanoObjeto);
+                        if (PlayerPrefs.HasKey("inimigoCount") && SceneManager.GetActiveScene().name == "Lab5_RPGSetup")
+                        {
+                            int inimigoCount = PlayerPrefs.GetInt("inimigoCount");
+                            if (inimigoCount >= 6)
+                            {
+                                PlayerPrefs.SetFloat("health", pontosDano.valor);
+                                SceneManager.LoadScene("Lab5_newScene");
+                            }
+                        }
                         break;
                     case Item.TipoItem.EMERALD:
                         deveDesaparecer = inventario.AddItem(DanoObjeto);

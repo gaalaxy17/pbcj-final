@@ -13,7 +13,7 @@ public class Inventario : MonoBehaviour
     public GameObject slotPrefab; // prefab do slot
     public const int numSlots = 5; // número maximo de slots
     Image[] itemImages = new Image[numSlots]; // lista de imagem do itens
-    Item[] items = new Item[numSlots]; // lista de itens
+    public Item[] items = new Item[numSlots]; // lista de itens
     GameObject[] slots = new GameObject[numSlots]; // lista de slots
 
     /* Start is called before the first frame update */
@@ -36,6 +36,7 @@ public class Inventario : MonoBehaviour
 
         if (itemsCount >= 5)
         {
+            PlayerPrefs.DeleteKey("health");
             SceneManager.LoadScene("Lab5_win");
         }
     }
@@ -59,7 +60,6 @@ public class Inventario : MonoBehaviour
     /* Método responsável por adicionar o item no inventário */
     public bool AddItem(Item itemToAdd)
     {
-
         for (int i = 0; i < items.Length; i++)
         {
             if(items[i] != null && items[i].tipoItem == itemToAdd.tipoItem && itemToAdd.empilhavel == true)

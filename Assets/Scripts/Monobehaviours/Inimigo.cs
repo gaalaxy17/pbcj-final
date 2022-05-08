@@ -64,10 +64,21 @@ public class Inimigo : Caractere
                 if (PlayerPrefs.HasKey("inimigoCount"))
                 {
                     int inimigoCount = PlayerPrefs.GetInt("inimigoCount");
-                    inimigoCount = inimigoCount + 1; 
-                    if(SceneManager.GetActiveScene().name == "Lab5_RPGSetup" && inimigoCount == 5)
+                    inimigoCount = inimigoCount + 1;
+                    PlayerPrefs.SetInt("inimigoCount", inimigoCount);
+                    if (SceneManager.GetActiveScene().name == "Lab5_RPGSetup" && inimigoCount == 6)
                     {
-                        SceneManager.LoadScene("Lab5_newScene");
+                        Player player = GameObject.Find("PlayerO(Clone)").GetComponent<Player>();
+                        print(player.inventario.items[0].name);
+                        if(player.inventario.items[0] != null)
+                        {
+                            if(player.inventario.items[0].tipoItem == Item.TipoItem.MOEDA && player.inventario.items[0].quantidade == 1)
+                            {
+                                PlayerPrefs.SetFloat("health", player.pontosDano.valor);
+                                SceneManager.LoadScene("Lab5_newScene");
+                            }
+                        }
+                        
                     }
                     PlayerPrefs.SetInt("inimigoCount", inimigoCount);
                 }

@@ -1183,10 +1183,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: bbd724909a3af0a4dbae607262e076c2, type: 3}
-    m_FontSize: 30
+    m_FontSize: 29
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 1
+    m_MinSize: 0
     m_MaxSize: 300
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -1215,17 +1215,22 @@ MonoBehaviour:
     https://www.deviantart.com/drewwayne/art/Pixel-Art-Brick-Tile-643449248
 
 
-    Soundtrack
-    - Marllon Silva https://www.youtube.com/watch?v=5bn3Jmvep1k
+    Collectables 
+    and menus - caio cerano
+
+    https://imgur.com/a/A54LuJG
+
+    https://imgur.com/a/yqgg1UG
+
+
+    Second
+    enemy - OcO https://itch.io/queue/c/844603/asset-packs?game_id=466748
 
 
     Soundtrack
-    - Igor Iwashita de Oliveira (https://bit.ly/36TfBOf)
+    - Marllon Silva
 
-    Voices - Chen Jingji
-    (Mesmo link acima)
-
-    Images - Caio Cerano Silva  (https://imgur.com/a/kSxsGS9)'
+    https://www.youtube.com/watch?v=5bn3Jmvep1k'
 --- !u!222 &2076341039
 CanvasRenderer:
   m_ObjectHideFlags: 0
