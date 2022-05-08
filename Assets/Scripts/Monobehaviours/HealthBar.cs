@@ -8,9 +8,9 @@ public class HealthBar : MonoBehaviour
 
     public PontosDano pontosDano; // Objeto de leitura dos dados de quantos pontos tem o Player
     public Player caractere; // recebera o objeto player
-    public Image medidorImagem; // recebe a barra da medição
+    public Image medidorImagem; // recebe a barra da mediï¿½ï¿½o
     public Text pdTexto; // recebe os dados de PD
-    float maxPontosDano; // armazena a quantidade limite de "saúde" do Player
+    float maxPontosDano; // armazena a quantidade limite de "saï¿½de" do Player
 
     void Start()
     {

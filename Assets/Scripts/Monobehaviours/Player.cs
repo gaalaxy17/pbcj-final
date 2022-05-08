@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : Caractere
 {
@@ -9,7 +10,7 @@ public class Player : Caractere
     public HealthBar HealthBarPrefab; // Referencia ao objeto prefab criado da HealthBar
     HealthBar healthBar;
 
-    public PontosDano pontosDano; // Valor da "saúde" do objeto
+    public PontosDano pontosDano; // Valor da "saï¿½de" do objeto
 
     private void Start()
     {
@@ -46,6 +47,7 @@ public class Player : Caractere
         base.KillCaractere();
         Destroy(healthBar.gameObject);
         Destroy(inventario.gameObject);
+        SceneManager.LoadScene("Lab5_defeat");
     }
 
     public override void ResetCaractere()
