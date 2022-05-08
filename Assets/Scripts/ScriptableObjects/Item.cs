@@ -16,7 +16,11 @@ public class Item : ScriptableObject
     public enum TipoItem // Enum para identificar o tipo do item
     {
         MOEDA,
-        HEALTH
+        HEALTH,
+        EMERALD,
+        RUBY,
+        DIAMOND,
+        TOPAZ
     }
 
     public TipoItem tipoItem; // Variavel do tipo do item

@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Lab5_defeat.unity
     guid: 411a9d412c7f952419ad9eec3638a0dc
+  - enabled: 1
+    path: Assets/Scenes/Lab5_newScene.unity
+    guid: 93810202d381ed848a5985914e392322
   m_configObjects: {}

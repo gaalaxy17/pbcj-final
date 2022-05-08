@@ -39,6 +39,7 @@ public class RPGGameManager : MonoBehaviour
             GameObject player = playerPontoSpawn.SpawnO();
             cameraManager.virtualCamera.Follow = player.transform;
         }
+        PlayerPrefs.DeleteKey("inimigoCount");
     }
 
     /* Start is called before the first frame */

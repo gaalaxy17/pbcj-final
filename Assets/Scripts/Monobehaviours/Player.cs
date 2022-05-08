@@ -79,6 +79,18 @@ public class Player : Caractere
                     case Item.TipoItem.MOEDA:
                         deveDesaparecer = inventario.AddItem(DanoObjeto);
                         break;
+                    case Item.TipoItem.EMERALD:
+                        deveDesaparecer = inventario.AddItem(DanoObjeto);
+                        break;
+                    case Item.TipoItem.RUBY:
+                        deveDesaparecer = inventario.AddItem(DanoObjeto);
+                        break;
+                    case Item.TipoItem.DIAMOND:
+                        deveDesaparecer = inventario.AddItem(DanoObjeto);
+                        break;
+                    case Item.TipoItem.TOPAZ:
+                        deveDesaparecer = inventario.AddItem(DanoObjeto);
+                        break;
                     case Item.TipoItem.HEALTH:
                         deveDesaparecer = AjusteDanoObjeto(DanoObjeto.quantidade);
                         break;

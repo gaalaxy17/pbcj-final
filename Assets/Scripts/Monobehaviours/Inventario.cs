@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
 
 /// <summary>
 /// Classe que gerencia o inventário do jogo
@@ -23,7 +25,19 @@ public class Inventario : MonoBehaviour
     /* Update is called once per frame */
     void Update()
     {
-        
+        int itemsCount = 0;
+        for (int i = 0; i < items.Length; i++)
+        {
+            if (items[i] != null)
+            {
+                itemsCount++;
+            }
+        }
+
+        if (itemsCount >= 5)
+        {
+            SceneManager.LoadScene("Lab5_win");
+        }
     }
 
     /* Método responsável por criar os slots do inventário */
@@ -45,7 +59,8 @@ public class Inventario : MonoBehaviour
     /* Método responsável por adicionar o item no inventário */
     public bool AddItem(Item itemToAdd)
     {
-        for(int i = 0; i < items.Length; i++)
+
+        for (int i = 0; i < items.Length; i++)
         {
             if(items[i] != null && items[i].tipoItem == itemToAdd.tipoItem && itemToAdd.empilhavel == true)
             {
@@ -64,6 +79,7 @@ public class Inventario : MonoBehaviour
                 itemImages[i].enabled = true;
                 return true;
             }
+
         }
         return false;
     }

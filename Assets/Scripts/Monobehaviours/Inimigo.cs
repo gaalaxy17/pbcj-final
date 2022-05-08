@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// Classe que implementa as especificidades do inimigo com base na classe de Caractere
@@ -15,7 +16,7 @@ public class Inimigo : Caractere
     /* Start is called before the first frame update */
     void Start()
     {
-        
+
     }
 
     /* Método que roda quando a instancia é habilitada */
@@ -60,8 +61,22 @@ public class Inimigo : Caractere
             if(pontosVida <= float.Epsilon)
             {
                 KillCaractere();
+                if (PlayerPrefs.HasKey("inimigoCount"))
+                {
+                    int inimigoCount = PlayerPrefs.GetInt("inimigoCount");
+                    inimigoCount = inimigoCount + 1; 
+                    if(SceneManager.GetActiveScene().name == "Lab5_RPGSetup" && inimigoCount == 5)
+                    {
+                        SceneManager.LoadScene("Lab5_newScene");
+                    }
+                    PlayerPrefs.SetInt("inimigoCount", inimigoCount);
+                }
+                else
+                {
+                    PlayerPrefs.SetInt("inimigoCount", 1);
+                }
                 break;
-            }
+            } 
             if(intervalo > float.Epsilon)
             {
                 yield return new WaitForSeconds(intervalo);
