@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Lab5_credits.unity
     guid: ef08b34dd7a6bfe4186d2b82e043c1d6
+  - enabled: 1
+    path: Assets/Scenes/Lab5_defeat.unity
+    guid: 411a9d412c7f952419ad9eec3638a0dc
   m_configObjects: {}

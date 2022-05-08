@@ -18,10 +18,10 @@ public class ManageEnd : MonoBehaviour
         
     }
 
-    /* Carrega a cena principal do jogo */
-    public void StartGameWorld()
+    /* Carrega o menu do jogo */
+    public void StartMenuScene()
     {
-        SceneManager.LoadScene("Lab5_RPGSetup");
+        SceneManager.LoadScene("Lab5_start");
     }
 
     public void StartCreditsScene()
