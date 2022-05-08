@@ -4,10 +4,13 @@ using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+/// <summary>
+/// A classe gerencia a tela de créditos, com suas respectivas ações/navegações entre telas.
+/// </summary>
 public class ManageCredits : MonoBehaviour
 {
 
-    // Start is called before the first frame update */
+    /* Start is called before the first frame update */
     void Start()
     {
     }

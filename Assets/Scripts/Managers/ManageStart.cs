@@ -4,10 +4,13 @@ using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+/// <summary>
+/// A classe gerencia a tela de início, com suas respectivas ações/navegações entre telas.
+/// </summary>
 public class ManageStart : MonoBehaviour
 {
 
-    // Start is called before the first frame update */
+    /* Start is called before the first frame update */
     void Start()
     {
     }
@@ -24,6 +27,7 @@ public class ManageStart : MonoBehaviour
         SceneManager.LoadScene("Lab5_RPGSetup");
     }
 
+    /* Carrega a cena de créditos do jogo */
     public void StartCreditsScene()
     {
         SceneManager.LoadScene("Lab5_credits");

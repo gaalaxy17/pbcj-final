@@ -3,25 +3,30 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// Classe que gerencia o inventário do jogo
+/// </summary>
 public class Inventario : MonoBehaviour
 {
-    public GameObject slotPrefab;
-    public const int numSlots = 5;
-    Image[] itemImages = new Image[numSlots];
-    Item[] items = new Item[numSlots];
-    GameObject[] slots = new GameObject[numSlots];
-    // Start is called before the first frame update
+    public GameObject slotPrefab; // prefab do slot
+    public const int numSlots = 5; // número maximo de slots
+    Image[] itemImages = new Image[numSlots]; // lista de imagem do itens
+    Item[] items = new Item[numSlots]; // lista de itens
+    GameObject[] slots = new GameObject[numSlots]; // lista de slots
+
+    /* Start is called before the first frame update */
     void Start()
     {
         CriaSlots();
     }
 
-    // Update is called once per frame
+    /* Update is called once per frame */
     void Update()
     {
         
     }
 
+    /* Método responsável por criar os slots do inventário */
     public void CriaSlots()
     {
         if(slotPrefab != null)
@@ -37,6 +42,7 @@ public class Inventario : MonoBehaviour
         }
     }
 
+    /* Método responsável por adicionar o item no inventário */
     public bool AddItem(Item itemToAdd)
     {
         for(int i = 0; i < items.Length; i++)

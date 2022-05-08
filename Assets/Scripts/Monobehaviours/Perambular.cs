@@ -2,32 +2,36 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D))]
-[RequireComponent(typeof(CircleCollider2D))]
-[RequireComponent(typeof(Animator))]
+/// <summary>
+/// Classe responsável pela ação de perambular do inimigo
+/// </summary>
+
+[RequireComponent(typeof(Rigidbody2D))] // Requer que o componente esteja presente na instancia, caso não esteja, adiciona o mesmo
+[RequireComponent(typeof(CircleCollider2D))] // Requer que o componente esteja presente na instancia, caso não esteja, adiciona o mesmo
+[RequireComponent(typeof(Animator))] // Requer que o componente esteja presente na instancia, caso não esteja, adiciona o mesmo
 
 public class Perambular : MonoBehaviour
 {
     public float velocidadePerseguicao; // velocidade do "Inimigo" na área de Spot
     public float velocidadePerambular; // velocidade do "Inimigo" passeando
-    float velocidadeCorrente;
+    float velocidadeCorrente; // velocidade atual
 
     public float intervaloMudancaDirecao; // tempo para alterar direção
     public bool perseguePlayer; // indicador de perseguidor ou não
 
-    Coroutine MoverCoroutine;
+    Coroutine MoverCoroutine; // Coroutine de movimento
 
     Rigidbody2D rb2D; // armazena o componente rigidbody2D
     Animator animator; // armazena o componente Animator
 
     Transform alvoTransform = null; // armazena o componente Transform do Alvo
 
-    Vector3 posicaoFinal; 
+    Vector3 posicaoFinal; // Vetor da posição final
     float anguloAtual = 0; // Angulo atribuido
 
     CircleCollider2D circleCollider; // armazena o componente de Spot
 
-    // Start is called before the first frame update
+    /* Start is called before the first frame update */
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -37,6 +41,7 @@ public class Perambular : MonoBehaviour
         circleCollider = GetComponent<CircleCollider2D>();
     }
 
+    /* Função para debug do collider */
     private void OnDrawGizmos()
     {
         if(circleCollider != null)
@@ -45,6 +50,7 @@ public class Perambular : MonoBehaviour
         }
     }
 
+    /* Corotine de perambular */
     public IEnumerator RotinaPerambular()
     {
         while (true)
@@ -59,6 +65,7 @@ public class Perambular : MonoBehaviour
         }
     }
 
+    /* Escolhe a nova posição de forma aleatória */
     void EscolheNovoPontoFinal()
     {
         anguloAtual += Random.Range(0, 360);
@@ -66,12 +73,14 @@ public class Perambular : MonoBehaviour
         posicaoFinal += Vector3ParaAngulo(anguloAtual);
     }
 
+    /* Retorna o vetor para o angulo da ação */
     Vector3 Vector3ParaAngulo(float anguloEntradaGraus)
     {
         float anguloEntradaRadianos = anguloEntradaGraus * Mathf.Deg2Rad;
         return new Vector3(Mathf.Cos(anguloEntradaRadianos), Mathf.Sin(anguloEntradaRadianos), 0);
     }
 
+    /* Método que move o inimigo para um ponto durante a ação de perambular */
     public IEnumerator Mover(Rigidbody2D rbParaMover, float velocidade)
     {
         float distanciaFaltante = (transform.position - posicaoFinal).sqrMagnitude;
@@ -92,6 +101,7 @@ public class Perambular : MonoBehaviour
         }
         animator.SetBool("Caminhando", false);
     }
+    /* Método trigger para quando um objeto entra em sua área de colisão, no caso, inicia a coroutine de mover, no spot, na velocidade de perseguição */
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -106,7 +116,7 @@ public class Perambular : MonoBehaviour
             MoverCoroutine = StartCoroutine(Mover(rb2D, velocidadeCorrente));
         }
     }
-
+    /* Método trigger para quando um objeto sai em sua área de colisão, no caso, do spot e volta para a velocidade de perambular */
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
@@ -121,7 +131,7 @@ public class Perambular : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
+    /* Update is called once per frame */
     void Update()
     {
         Debug.DrawLine(rb2D.position, posicaoFinal, Color.red);

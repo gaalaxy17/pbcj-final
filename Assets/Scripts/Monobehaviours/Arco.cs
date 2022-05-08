@@ -2,8 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Classe que é responsável pela animação da trajetoria de arco da arma
+/// </summary>
 public class Arco : MonoBehaviour
 {
+    /* Método que cuida de realizar a trajetória da munição quando disparada, na forma de um arco */
     public IEnumerator arcoTrajetoria(Vector3 destino, float duracao)
     {
         var posicaoInicial = transform.position;

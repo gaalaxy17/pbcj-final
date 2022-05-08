@@ -3,15 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+/// <summary>
+/// Classe que implementa as especificidades do player, com todas as suas respectivas funcionalidades
+/// </summary>
+
 public class Player : Caractere
 {
     public Inventario InventarioPrefab; // Referencia ao objeto prefab criado do Inventario
-    Inventario inventario;
+    Inventario inventario; // Instancia do inventario
     public HealthBar HealthBarPrefab; // Referencia ao objeto prefab criado da HealthBar
-    HealthBar healthBar;
+    HealthBar healthBar; // Instancia da healthbae
 
     public PontosDano pontosDano; // Valor da "sa�de" do objeto
 
+    /* Start is called before the first frame update */
     private void Start()
     {
         pontosDano.valor = inicioPontosDano;
@@ -20,6 +25,7 @@ public class Player : Caractere
         inventario = Instantiate(InventarioPrefab);
     }
 
+    /* Implementa o método que causa dano o player */
     public override IEnumerator DanoCaractere(int dano, float intervalo)
     {
         while (true)
@@ -41,7 +47,7 @@ public class Player : Caractere
             }
         }
     }
-
+    /* Mata o player, destroi as instancias da healbar e do inventario e carrega a tela de derrota */
     public override void KillCaractere()
     {
         base.KillCaractere();
@@ -50,6 +56,7 @@ public class Player : Caractere
         SceneManager.LoadScene("Lab5_defeat");
     }
 
+    /* Reseta as instancias do inventario e healthbar, bem como sua vida */
     public override void ResetCaractere()
     {
         inventario = Instantiate(InventarioPrefab);
@@ -58,6 +65,7 @@ public class Player : Caractere
         pontosDano.valor = inicioPontosDano;
     }
 
+    /* Método trigger para quando um objeto entra em sua área de colisão, no caso, para pegar um coletavel ou uma vida */
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Coletavel"))
@@ -85,6 +93,7 @@ public class Player : Caractere
         }
     }
 
+    /* Ajusta valor da vida */
     public bool AjusteDanoObjeto(int quantidade)
     {
         if(pontosDano.valor < maxPontosDano)

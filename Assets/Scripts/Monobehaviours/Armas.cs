@@ -2,6 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Classe responsável pelas mecânicas das armas do jogo
+/// </summary>
+
 [RequireComponent(typeof(Animator))]
 public class Armas : MonoBehaviour
 {
@@ -11,16 +15,16 @@ public class Armas : MonoBehaviour
     public int tamanhoPiscina; // Tamanho da piscina
     public float velocidadeArma; // velocidade da Munição
 
-    bool atirando;
+    bool atirando; // Campo que salva o estado da ação de atirar
     [HideInInspector]
-    public Animator animator;
+    public Animator animator; // Instancia do animator
 
-    Camera cameraLocal;
+    Camera cameraLocal; // Instancia da camera
 
-    float slopePositivo;
-    float slopeNegativo;
+    float slopePositivo; // Variavel que salva o slopePositivo
+    float slopeNegativo; // Variavel que salva o slopeNegativo
 
-    enum Quadrante
+    enum Quadrante // Enum com os quadrantes existentes
     {
         Leste,
         Sul,
@@ -28,6 +32,7 @@ public class Armas : MonoBehaviour
         Norte
     }
 
+    /* Método roda no carregamento da instância, cria ou adiciona munições na pool de objetos */
     public void Awake()
     {
         if(municaoPiscina == null)
@@ -42,6 +47,8 @@ public class Armas : MonoBehaviour
         }
     }
 
+
+    /* Start is called before the first frame update */
     private void Start()
     {
         animator = GetComponent<Animator>();
@@ -55,6 +62,7 @@ public class Armas : MonoBehaviour
         slopeNegativo = PegaSlope(acimaEsquerda, abaixoDireita);
     }
 
+    /* Método que retorna true caso esteja acima do slope positivo e false no caso contrário */
     bool AcimaSlopePositivo(Vector2 posicaoEntrada)
     {
         Vector2 posicaoPlayer = gameObject.transform.position;
@@ -63,6 +71,7 @@ public class Armas : MonoBehaviour
         float entradaInterseccao = posicaoMouse.y - (slopePositivo * posicaoMouse.x);
         return entradaInterseccao > interseccaoY;
     }
+    /* Método que retorna true caso esteja acima do slope negativo e false no caso contrário */
     bool AcimaSlopeNegativo(Vector2 posicaoEntrada)
     {
         Vector2 posicaoPlayer = gameObject.transform.position;
@@ -72,6 +81,7 @@ public class Armas : MonoBehaviour
         return entradaInterseccao > interseccaoY;
     }
 
+    /* Método que retorna o quadrante com base nas informações do slope */
     Quadrante PegaQuadrante()
     {
         Vector2 posicaoMouse = Input.mousePosition;
@@ -96,6 +106,7 @@ public class Armas : MonoBehaviour
         }
     }
 
+    /* Método que atualiza o estado das animações de ataque e sua respectiva posição de acordo com o lado que estiver atirando */
     void UpdateEstado()
     {
         if (atirando)
@@ -131,7 +142,7 @@ public class Armas : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
+    /* Update is called once per frame */
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
@@ -142,11 +153,13 @@ public class Armas : MonoBehaviour
         UpdateEstado();
     }
 
+    /* Método que pega o valor do slope */
     float PegaSlope(Vector2 ponto1, Vector2 ponto2)
     {
         return (ponto2.y - ponto1.y) / (ponto2.x - ponto1.x);
     }
 
+    /* Método responsável por spawnar a munição, ou seja, pega do pool e seta o objeto como ativo na posição informada */
     public GameObject SpawnMunicao(Vector3 posicao)
     {
         foreach(GameObject municao in municaoPiscina)
@@ -161,6 +174,7 @@ public class Armas : MonoBehaviour
         return null;
     }
 
+    /* Método responsável por disparar a munição, iniciando a coroutine da trajetória do arco até o clique do mouse */
     void DisparaMunicao()
     {
         Vector3 posicaoMouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -173,6 +187,7 @@ public class Armas : MonoBehaviour
         }
     }
 
+    /* Ao destruir o objeto a pool também é destruida */
     private void OnDestroy()
     {
         municaoPiscina = null;

@@ -4,10 +4,13 @@ using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+/// <summary>
+/// A classe gerencia a tela de fim do jogo, com suas respectivas ações/navegações entre telas.
+/// </summary>
 public class ManageEnd : MonoBehaviour
 {
 
-    // Start is called before the first frame update */
+    /* Start is called before the first frame update */
     void Start()
     {
     }
@@ -24,6 +27,7 @@ public class ManageEnd : MonoBehaviour
         SceneManager.LoadScene("Lab5_start");
     }
 
+    /* Vai para a cena de créditos */
     public void StartCreditsScene()
     {
         SceneManager.LoadScene("Lab5_credits");
