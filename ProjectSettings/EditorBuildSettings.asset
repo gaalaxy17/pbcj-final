@@ -5,25 +5,25 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 1
-    path: Assets/Scenes/Lab5_RPGSetup.unity
-    guid: e686a138ca0878948a3be89f290b3672
   - enabled: 1
     path: Assets/Scenes/Lab5_start.unity
     guid: ceed51f0b1a46a9439cce74285521e40
   - enabled: 1
-    path: Assets/Scenes/Lab5_win.unity
-    guid: 918aca27e72ca214098e0716adf504f7
+    path: Assets/Scenes/Lab5_RPGSetup.unity
+    guid: e686a138ca0878948a3be89f290b3672
+  - enabled: 1
+    path: Assets/Scenes/Lab5_newScene.unity
+    guid: 93810202d381ed848a5985914e392322
   - enabled: 1
     path: Assets/Scenes/Lab5_credits.unity
     guid: ef08b34dd7a6bfe4186d2b82e043c1d6
   - enabled: 1
+    path: Assets/Scenes/Lab5_win.unity
+    guid: 918aca27e72ca214098e0716adf504f7
+  - enabled: 1
     path: Assets/Scenes/Lab5_defeat.unity
     guid: 411a9d412c7f952419ad9eec3638a0dc
-  - enabled: 1
-    path: Assets/Scenes/Lab5_newScene.unity
-    guid: 93810202d381ed848a5985914e392322
   m_configObjects: {}

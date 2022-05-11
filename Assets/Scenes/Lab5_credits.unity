@@ -159,7 +159,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 238.33, y: -432.15}
+  m_AnchoredPosition: {x: 238.33, y: -274.9}
   m_SizeDelta: {x: 400, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &21154116
@@ -645,8 +645,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1920, y: 1080}
+  m_AnchoredPosition: {x: 0, y: 0.195}
+  m_SizeDelta: {x: 1280, y: 719.61}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &360173433
 MonoBehaviour:
@@ -720,7 +720,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000022054, y: 430.9757}
+  m_AnchoredPosition: {x: 0.0044776, y: 288.63}
   m_SizeDelta: {x: 876.6512, y: 142.7349}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &785279830
@@ -745,7 +745,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: bbd724909a3af0a4dbae607262e076c2, type: 3}
-    m_FontSize: 150
+    m_FontSize: 120
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
@@ -1027,7 +1027,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -238.33, y: -432.15}
+  m_AnchoredPosition: {x: -238.33, y: -285}
   m_SizeDelta: {x: 400, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1420580815
@@ -1158,7 +1158,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000083089, y: 17.353}
+  m_AnchoredPosition: {x: 0.000022054, y: 0.19501}
   m_SizeDelta: {x: 876.6512, y: 684.51}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2076341038
@@ -1183,7 +1183,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: bbd724909a3af0a4dbae607262e076c2, type: 3}
-    m_FontSize: 29
+    m_FontSize: 25
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -1194,19 +1194,16 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Members
+  m_Text: 'Caio Cerano Silva 11201822405
 
-
-    Caio Cerano Silva 11201822405
-
-    Igor Iwashita de Oliveira
-    11201822406
+    Igor Iwashita de Oliveira 11201822406
 
 
     Assets
 
 
-    Font - Pixeboy By AbasCreative (https://www.fontspace.com/pixeboy-font-f43730)
+    Font
+    - Pixeboy By AbasCreative (https://www.fontspace.com/pixeboy-font-f43730)
 
 
     Background
