@@ -78,22 +78,14 @@ public class Player : Caractere
         if (collision.gameObject.CompareTag("Coletavel"))
         {
             Item DanoObjeto = collision.gameObject.GetComponent<Consumable>().item;
-            if(DanoObjeto != null)
+            print("Adicionou um " + DanoObjeto.name);
+            if (DanoObjeto != null)
             {
                 bool deveDesaparecer = false;
                 switch (DanoObjeto.tipoItem)
                 {
                     case Item.TipoItem.MOEDA:
                         deveDesaparecer = inventario.AddItem(DanoObjeto);
-                        if (PlayerPrefs.HasKey("inimigoCount") && SceneManager.GetActiveScene().name == "Lab5_RPGSetup")
-                        {
-                            int inimigoCount = PlayerPrefs.GetInt("inimigoCount");
-                            if (inimigoCount >= 6)
-                            {
-                                PlayerPrefs.SetFloat("health", pontosDano.valor);
-                                SceneManager.LoadScene("Lab5_newScene");
-                            }
-                        }
                         break;
                     case Item.TipoItem.EMERALD:
                         deveDesaparecer = inventario.AddItem(DanoObjeto);

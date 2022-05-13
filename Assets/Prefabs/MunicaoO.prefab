@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1405182808948116714}
   - component: {fileID: 1405182808948116713}
   - component: {fileID: -1070561034037053191}
+  - component: {fileID: -3006461026064079239}
   m_Layer: 11
   m_Name: MunicaoO
   m_TagString: Untagged
@@ -74,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 528954511
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 18976bfa79bb5524c89fb51b34852721, type: 3}
+  m_Sprite: {fileID: 7188382441530675346, guid: 00fcf04b6f9f3304b8a00153bcb6cbe6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -126,3 +127,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e10fb002101de04d9e951502dfe5d1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &-3006461026064079239
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1405182808948116725}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 65c79c3a55fe0ec47ba6622f20c1c8ea, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

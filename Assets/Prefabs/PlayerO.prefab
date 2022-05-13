@@ -31,8 +31,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3367995429657629301}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0.2303, y: 0.2303, z: 0}
+  m_LocalScale: {x: 1.4604967, y: 1.4604967, z: 1.4604967}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -77,7 +77,7 @@ SpriteRenderer:
   m_SortingLayerID: 528954511
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 5012491988584609388, guid: 174a0c0716ca6b24eae35125558b571b, type: 3}
+  m_Sprite: {fileID: -6473354864012967506, guid: 0d1e915e08815e34499738538940506b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -120,7 +120,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0011862516, y: -0.07710844}
+  m_Offset: {x: -0.062932044, y: -0.15653855}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -131,7 +131,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.561075, y: 0.8457831}
+  m_Size: {x: 0.5017416, y: 0.6333314}
   m_EdgeRadius: 0
 --- !u!50 &3367995429657629297
 Rigidbody2D:
@@ -182,7 +182,9 @@ MonoBehaviour:
   inicioPontosDano: 6
   maxPontosDano: 10
   InventarioPrefab: {fileID: 430085157616918011, guid: dbdf9c683034e9c4cb8a43fcc03b8662, type: 3}
+  inventario: {fileID: 0}
   HealthBarPrefab: {fileID: 8835271644366852049, guid: 7513a3e7901e39c4193d1105954d3848, type: 3}
+  healthBar: {fileID: 0}
   pontosDano: {fileID: 11400000, guid: f68674175229b1c47a8a3b4367129ffe, type: 2}
 --- !u!114 &6364781386950855805
 MonoBehaviour:
@@ -199,3 +201,4 @@ MonoBehaviour:
   municaoPrefab: {fileID: 1405182808948116725, guid: 840f3f7ce0794db4289758defd29b1e3, type: 3}
   tamanhoPiscina: 7
   velocidadeArma: 1
+  animator: {fileID: 0}

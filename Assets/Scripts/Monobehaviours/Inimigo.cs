@@ -8,6 +8,9 @@ using UnityEngine.SceneManagement;
 /// </summary>
 public class Inimigo : Caractere
 {
+
+    public GameObject coracaoPrefab;
+
     float pontosVida; // equivalente à saúde do inimigo
     public int forcaDano; // poder de dano
 
@@ -61,24 +64,18 @@ public class Inimigo : Caractere
             if(pontosVida <= float.Epsilon)
             {
                 KillCaractere();
+                Instantiate(this.coracaoPrefab, transform.position, Quaternion.identity);
                 if (PlayerPrefs.HasKey("inimigoCount"))
                 {
                     int inimigoCount = PlayerPrefs.GetInt("inimigoCount");
                     inimigoCount = inimigoCount + 1;
                     PlayerPrefs.SetInt("inimigoCount", inimigoCount);
-                    if (SceneManager.GetActiveScene().name == "Lab5_RPGSetup" && inimigoCount == 6)
+                    if (SceneManager.GetActiveScene().name == "Lab5_RPGSetup" && inimigoCount == 8)
                     {
                         Player player = GameObject.Find("PlayerO(Clone)").GetComponent<Player>();
-                        print(player.inventario.items[0].name);
-                        if(player.inventario.items[0] != null)
-                        {
-                            if(player.inventario.items[0].tipoItem == Item.TipoItem.MOEDA && player.inventario.items[0].quantidade == 1)
-                            {
-                                PlayerPrefs.SetFloat("health", player.pontosDano.valor);
-                                SceneManager.LoadScene("Lab5_newScene");
-                            }
-                        }
                         
+                        PlayerPrefs.SetFloat("health", player.pontosDano.valor);
+                        SceneManager.LoadScene("Lab5_newScene");
                     }
                     PlayerPrefs.SetInt("inimigoCount", inimigoCount);
                 }

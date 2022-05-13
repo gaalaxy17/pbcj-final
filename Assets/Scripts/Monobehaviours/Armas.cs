@@ -134,6 +134,7 @@ public class Armas : MonoBehaviour
             animator.SetBool("Atirando", true);
             animator.SetFloat("AtiraX", vetorQuadrante.x);
             animator.SetFloat("AtiraY", vetorQuadrante.y);
+
             atirando = false;
         }
         else
@@ -185,6 +186,7 @@ public class Armas : MonoBehaviour
             float duracaoTrajetoria = 1.0f / velocidadeArma;
             StartCoroutine(arcoScript.arcoTrajetoria(posicaoMouse, duracaoTrajetoria));
         }
+
     }
 
     /* Ao destruir o objeto a pool também é destruida */
