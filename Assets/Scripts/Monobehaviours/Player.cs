@@ -14,6 +14,8 @@ public class Player : Caractere
     public HealthBar HealthBarPrefab; // Referencia ao objeto prefab criado da HealthBar
     public HealthBar healthBar; // Instancia da healthbae
 
+    public Item swordItem;
+
     public PontosDano pontosDano; // Valor da "sa�de" do objeto
 
     /* Start is called before the first frame update */
@@ -98,6 +100,12 @@ public class Player : Caractere
                         break;
                     case Item.TipoItem.TOPAZ:
                         deveDesaparecer = inventario.AddItem(DanoObjeto);
+                        break;
+                    case Item.TipoItem.SWORD:
+                        deveDesaparecer = inventario.AddItem(DanoObjeto);
+                        PlayerPrefs.SetInt("inimigoCount", 0);
+                        PlayerPrefs.SetFloat("health", pontosDano.valor);
+                        SceneManager.LoadScene("Lab5_lastScene");
                         break;
                     case Item.TipoItem.HEALTH:
                         deveDesaparecer = AjusteDanoObjeto(DanoObjeto.quantidade);

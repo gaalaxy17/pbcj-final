@@ -29,6 +29,12 @@ public class PontoSpawn : MonoBehaviour
         return null;
     }
 
+    /* Atualiza o valor do intervalo de repetição */
+    public void setIntervaloRepeticao(float intervalo)
+    {
+        this.intervaloRepeticao = intervalo;
+    }
+
     /* Update is called once per frame */
     void Update()
     {

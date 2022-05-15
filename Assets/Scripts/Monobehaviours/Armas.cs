@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// Classe responsável pelas mecânicas das armas do jogo
@@ -11,11 +12,15 @@ public class Armas : MonoBehaviour
 {
 
     public GameObject municaoPrefab; // armazena o prefab da munição
+    public GameObject meleePrefab; // armazena o prefab de um ataque melee
     static List<GameObject> municaoPiscina; // piscina da munição
+    static List<GameObject> meleePiscina; // piscina de ataques
     public int tamanhoPiscina; // Tamanho da piscina
     public float velocidadeArma; // velocidade da Munição
 
     bool atirando; // Campo que salva o estado da ação de atirar
+    bool left; // Campo que salva se o ataque é para a esquerda
+    bool right; // Campo que salva se o ataque é para a direita
     [HideInInspector]
     public Animator animator; // Instancia do animator
 
@@ -35,16 +40,30 @@ public class Armas : MonoBehaviour
     /* Método roda no carregamento da instância, cria ou adiciona munições na pool de objetos */
     public void Awake()
     {
-        if(municaoPiscina == null)
-        {
-            municaoPiscina = new List<GameObject>();
-        }
-        for(int i = 0; i < tamanhoPiscina; i++)
-        {
-            GameObject municaoO = Instantiate(municaoPrefab);
-            municaoO.SetActive(false);
-            municaoPiscina.Add(municaoO);
-        }
+        
+            if (meleePiscina == null)
+            {
+                meleePiscina = new List<GameObject>();
+            }
+            for (int i = 0; i < tamanhoPiscina; i++)
+            {
+                GameObject meleeO = Instantiate(meleePrefab);
+                meleeO.SetActive(false);
+                meleePiscina.Add(meleeO);
+            }
+        
+            if (municaoPiscina == null)
+            {
+                municaoPiscina = new List<GameObject>();
+            }
+
+            for (int i = 0; i < tamanhoPiscina; i++)
+            {
+                GameObject municaoO = Instantiate(municaoPrefab);
+                municaoO.SetActive(false);
+                municaoPiscina.Add(municaoO);
+            }
+        
     }
 
 
@@ -117,12 +136,16 @@ public class Armas : MonoBehaviour
             {
                 case Quadrante.Leste:
                     vetorQuadrante = new Vector2(1.0f, 0.0f);
+                    left = true;
+                    right = false;
                     break;
                 case Quadrante.Sul:
                     vetorQuadrante = new Vector2(0.0f, -1.0f);
                     break;
                 case Quadrante.Oeste:
                     vetorQuadrante = new Vector2(-1.0f, 1.0f);
+                    right = true;
+                    left = false;
                     break;
                 case Quadrante.Norte:
                     vetorQuadrante = new Vector2(0.0f, 0.0f);
@@ -131,7 +154,13 @@ public class Armas : MonoBehaviour
                     vetorQuadrante = new Vector2(0.0f, 0.0f);
                     break;
             }
-            animator.SetBool("Atirando", true);
+            if (SceneManager.GetActiveScene().name == "Lab5_lastScene") {
+                animator.SetBool("Melee", true);
+            }
+            else
+            {
+                animator.SetBool("Atirando", true);
+            }
             animator.SetFloat("AtiraX", vetorQuadrante.x);
             animator.SetFloat("AtiraY", vetorQuadrante.y);
 
@@ -139,7 +168,14 @@ public class Armas : MonoBehaviour
         }
         else
         {
-            animator.SetBool("Atirando", false);
+            if (SceneManager.GetActiveScene().name == "Lab5_lastScene")
+            {
+                animator.SetBool("Melee", false);
+            }
+            else
+            {
+                animator.SetBool("Atirando", false);
+            }
         }
     }
 
@@ -149,7 +185,14 @@ public class Armas : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             atirando = true;
-            DisparaMunicao();
+            if (SceneManager.GetActiveScene().name == "Lab5_lastScene")
+            {
+                AtaqueMelee();
+            }
+            else
+            {
+                DisparaMunicao();
+            }
         }
         UpdateEstado();
     }
@@ -174,6 +217,19 @@ public class Armas : MonoBehaviour
         }
         return null;
     }
+    public GameObject MeleeAtack(Vector3 posicao)
+    {
+        foreach (GameObject melee in meleePiscina)
+        {
+            if (melee.activeSelf == false)
+            {
+                melee.SetActive(true);
+                melee.transform.position = posicao;
+                return melee;
+            }
+        }
+        return null;
+    }
 
     /* Método responsável por disparar a munição, iniciando a coroutine da trajetória do arco até o clique do mouse */
     void DisparaMunicao()
@@ -188,10 +244,33 @@ public class Armas : MonoBehaviour
         }
 
     }
+    void AtaqueMelee()
+    {
+        GameObject player = GameObject.Find("PlayerO(Clone)");
+
+        Vector3 posicao1 = new Vector3(player.transform.position.x + 1.2f, player.transform.position.y,0);
+        Vector3 posicao2 = new Vector3(player.transform.position.x - 1.2f, player.transform.position.y, 0);
+
+        GameObject municao = MeleeAtack(transform.position);
+        if (municao != null)
+        {
+            Arco arcoScript = municao.GetComponent<Arco>();
+            float duracaoTrajetoria = 1.0f / 15;
+            if (right)
+            {
+                StartCoroutine(arcoScript.swordTrajetoria(posicao2, duracaoTrajetoria));
+            }
+            if (left)
+            {
+                StartCoroutine(arcoScript.swordTrajetoria(posicao1, duracaoTrajetoria));
+            }
+        }
+    }
 
     /* Ao destruir o objeto a pool também é destruida */
     private void OnDestroy()
     {
         municaoPiscina = null;
+        meleePiscina = null;
     }
 }

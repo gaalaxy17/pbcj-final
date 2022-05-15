@@ -20,7 +20,8 @@ public class Item : ScriptableObject
         EMERALD,
         RUBY,
         DIAMOND,
-        TOPAZ
+        TOPAZ,
+        SWORD
     }
 
     public TipoItem tipoItem; // Variavel do tipo do item

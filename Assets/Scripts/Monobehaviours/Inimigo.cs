@@ -10,6 +10,7 @@ public class Inimigo : Caractere
 {
 
     public GameObject coracaoPrefab;
+    public GameObject swordPrefab;
 
     float pontosVida; // equivalente à saúde do inimigo
     public int forcaDano; // poder de dano
@@ -65,6 +66,12 @@ public class Inimigo : Caractere
             {
                 KillCaractere();
                 Instantiate(this.coracaoPrefab, transform.position, Quaternion.identity);
+
+                if (SceneManager.GetActiveScene().name == "Lab5_lastScene")
+                {
+                    SceneManager.LoadScene("Lab5_win");
+                }
+
                 if (PlayerPrefs.HasKey("inimigoCount"))
                 {
                     int inimigoCount = PlayerPrefs.GetInt("inimigoCount");
@@ -73,10 +80,17 @@ public class Inimigo : Caractere
                     if (SceneManager.GetActiveScene().name == "Lab5_RPGSetup" && inimigoCount == 8)
                     {
                         Player player = GameObject.Find("PlayerO(Clone)").GetComponent<Player>();
-                        
+
+                        PlayerPrefs.SetInt("inimigoCount", 0);
+
                         PlayerPrefs.SetFloat("health", player.pontosDano.valor);
                         SceneManager.LoadScene("Lab5_newScene");
-                    }
+                    } else if (SceneManager.GetActiveScene().name == "Lab5_newScene" && inimigoCount == 10)
+                    {
+                        GameObject.Find("InimigoPontoSpawn").GetComponent<PontoSpawn>().setIntervaloRepeticao(0.0f);
+                        Instantiate(this.swordPrefab, transform.position, Quaternion.identity);
+                    } 
+
                     PlayerPrefs.SetInt("inimigoCount", inimigoCount);
                 }
                 else
