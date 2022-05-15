@@ -76,6 +76,7 @@ public class Inimigo : Caractere
                 {
                     int inimigoCount = PlayerPrefs.GetInt("inimigoCount");
                     inimigoCount = inimigoCount + 1;
+                    print(inimigoCount);
                     PlayerPrefs.SetInt("inimigoCount", inimigoCount);
                     if (SceneManager.GetActiveScene().name == "Lab5_RPGSetup" && inimigoCount == 8)
                     {
@@ -87,7 +88,6 @@ public class Inimigo : Caractere
                         SceneManager.LoadScene("Lab5_newScene");
                     } else if (SceneManager.GetActiveScene().name == "Lab5_newScene" && inimigoCount == 10)
                     {
-                        GameObject.Find("InimigoPontoSpawn").GetComponent<PontoSpawn>().setIntervaloRepeticao(0.0f);
                         Instantiate(this.swordPrefab, transform.position, Quaternion.identity);
                     } 
 

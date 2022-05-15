@@ -25,20 +25,7 @@ public class Inventario : MonoBehaviour
     /* Update is called once per frame */
     void Update()
     {
-        int itemsCount = 0;
-        for (int i = 0; i < items.Length; i++)
-        {
-            if (items[i] != null)
-            {
-                itemsCount++;
-            }
-        }
-
-        if (itemsCount >= 5)
-        {
-            PlayerPrefs.DeleteKey("health");
-            SceneManager.LoadScene("Lab5_win");
-        }
+        
     }
 
     /* Método responsável por criar os slots do inventário */
