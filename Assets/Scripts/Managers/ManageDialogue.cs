@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// Classe que implementa as especificidades do dialogo, com todas as suas respectivas funcionalidades
+/// </summary>
 public class ManageDialogue : MonoBehaviour
 {
     public Text nameText;
@@ -19,11 +22,11 @@ public class ManageDialogue : MonoBehaviour
     {
         if (Input.GetKeyDown("e"))
         {
-            print("E key was pressed");
+            Debug.Log("E key was pressed");
             DisplayNextSentence();
         }
     }
-
+    /* Metodo para quando o diálogo for iniciado */
     public void StartDialogue (Dialogue dialogue)
     {
         animator.SetBool("IsOpen", true);
@@ -41,6 +44,7 @@ public class ManageDialogue : MonoBehaviour
         DisplayNextSentence();
     }
 
+    /* Metodo para mostar a proxima sequencia do diálogo*/
     public void DisplayNextSentence ()
     {
         if (sentences.Count == 0)
@@ -50,10 +54,13 @@ public class ManageDialogue : MonoBehaviour
         }
 
         string sentence = sentences.Dequeue();
+
         StopAllCoroutines();
+
         StartCoroutine(TypeSentence(sentence));
     }
 
+    /* Metodo para animar as letras ao serem apresentadas no dialogo*/
     IEnumerator TypeSentence (string sentence)
     {
         dialogueText.text = "";
@@ -64,10 +71,12 @@ public class ManageDialogue : MonoBehaviour
             yield return null;
         }
     }
+
+    /* Metodo para finalizar o diálogo*/
     void EndDialogue ()
     {
         animator.SetBool("IsOpen", false);
 
-        Debug.Log("End of the conversation with.");
+        Debug.Log("End of the conversation.");
     }
 }
