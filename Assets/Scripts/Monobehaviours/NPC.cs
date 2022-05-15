@@ -15,7 +15,12 @@ public class NPC : MonoBehaviour
     {
         Debug.Log("Entered conversation with" + collision.gameObject.name);
 
-        TriggerDialogue();
+        if(collision.gameObject.name == "PlayerO(Clone)")
+        {
+            TriggerDialogue();
+        }
+
+        
     }
 
     /* Metodo trigger para iniciar o dialogo ao se interagir com um NPC*/
@@ -24,7 +29,7 @@ public class NPC : MonoBehaviour
         Debug.Log("Dialog triggered");
         FindObjectOfType<ManageDialogue>().StartDialogue(dialogue);
     }
-    
+
     // Start is called before the first frame update
     void Start()
     {

@@ -10,7 +10,7 @@ using UnityEngine;
 public class Dialogue
 {
     public string name; // Nome do personagem com quem o personagem esta interagindo
-    [TextArea(3, 10)] // Tamanho das frases inseridas no texto
+    [TextArea(2, 3)] // Tamanho dos campos para inserir os diálogos
     public string[] sentences; // Frases do dialogo
 
 }
