@@ -8,16 +8,19 @@ using UnityEngine.UI;
 /// </summary>
 public class ManageDialogue : MonoBehaviour
 {
-    public Text nameText;
-    public Text dialogueText;
+    public Text nameText; // Nome do personagem/NPC
+    public Text dialogueText; // Texto do dialogo
 
-    public Animator animator;
-    private Queue<string> sentences; // Queu com as frases utilizadas no dialogo
-    // Start is called before the first frame update
+    public Animator animator; // Animator do dialogo
+    private Queue<string> sentences; // Queue com as frases utilizadas no dialogo
+
+    /* Start is called before the first frame update */
     void Start()
     {
         sentences = new Queue<string>();
     }
+
+    /* Update is called once per frame */
     void Update()
     {
         if (Input.GetKeyDown("e"))
