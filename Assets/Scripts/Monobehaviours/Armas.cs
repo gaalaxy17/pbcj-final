@@ -217,6 +217,7 @@ public class Armas : MonoBehaviour
         }
         return null;
     }
+    /* Método responsavel por spawnar os ataques melees, ou seja, pega do pool e seta o objeto como ativo na posição informada */
     public GameObject MeleeAtack(Vector3 posicao)
     {
         foreach (GameObject melee in meleePiscina)
@@ -244,6 +245,7 @@ public class Armas : MonoBehaviour
         }
 
     }
+    /* Método responsável pelo ataque melee, iniciando a coroutine da trajetória do ataque até o clique do mouse */
     void AtaqueMelee()
     {
         GameObject player = GameObject.Find("PlayerO(Clone)");

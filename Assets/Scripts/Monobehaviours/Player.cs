@@ -14,7 +14,7 @@ public class Player : Caractere
     public HealthBar HealthBarPrefab; // Referencia ao objeto prefab criado da HealthBar
     public HealthBar healthBar; // Instancia da healthbae
 
-    public Item swordItem;
+    public Item swordItem; // Referencia o item "espada"
 
     public PontosDano pontosDano; // Valor da "sa�de" do objeto
 

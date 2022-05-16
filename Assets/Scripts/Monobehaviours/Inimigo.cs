@@ -9,8 +9,8 @@ using UnityEngine.SceneManagement;
 public class Inimigo : Caractere
 {
 
-    public GameObject coracaoPrefab;
-    public GameObject swordPrefab;
+    public GameObject coracaoPrefab; // prefab do coração que é dropado ao morrer
+    public GameObject swordPrefab; // prefab da espada dropada na segunda fase
 
     float pontosVida; // equivalente à saúde do inimigo
     public int forcaDano; // poder de dano
@@ -55,7 +55,9 @@ public class Inimigo : Caractere
         }
     }
 
-    /* Implementação método de dano aplicado ao inimigo, responsável por matar o inimigo caso o dano for maior que sua vida */
+    /* Implementação método de dano aplicado ao inimigo, responsável por matar o inimigo caso o dano for maior que sua vida
+     * Também responsável pelas trocas de cenário conforme os inimigos vão morrendo
+     */
     public override IEnumerator DanoCaractere(int dano, float intervalo)
     {
         while (true)
@@ -76,6 +78,7 @@ public class Inimigo : Caractere
                 {
                     int inimigoCount = PlayerPrefs.GetInt("inimigoCount");
                     inimigoCount = inimigoCount + 1;
+                    print(inimigoCount);
                     PlayerPrefs.SetInt("inimigoCount", inimigoCount);
                     if (SceneManager.GetActiveScene().name == "Lab5_RPGSetup" && inimigoCount == 8)
                     {
@@ -87,7 +90,6 @@ public class Inimigo : Caractere
                         SceneManager.LoadScene("Lab5_newScene");
                     } else if (SceneManager.GetActiveScene().name == "Lab5_newScene" && inimigoCount == 10)
                     {
-                        GameObject.Find("InimigoPontoSpawn").GetComponent<PontoSpawn>().setIntervaloRepeticao(0.0f);
                         Instantiate(this.swordPrefab, transform.position, Quaternion.identity);
                     } 
 

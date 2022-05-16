@@ -23,6 +23,7 @@ public class Arco : MonoBehaviour
         gameObject.SetActive(false);
     }
 
+    /* Método que cuida do ataque melee */
     public IEnumerator swordTrajetoria(Vector3 destino, float duracao)
     {
         var posicaoInicial = transform.position;
