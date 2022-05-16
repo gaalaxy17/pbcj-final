@@ -159,8 +159,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 238.33, y: -274.9}
-  m_SizeDelta: {x: 400, y: 100}
+  m_AnchoredPosition: {x: 200, y: -280}
+  m_SizeDelta: {x: 300, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &21154116
 MonoBehaviour:
@@ -315,7 +315,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: bbd724909a3af0a4dbae607262e076c2, type: 3}
-    m_FontSize: 100
+    m_FontSize: 80
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -892,7 +892,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: bbd724909a3af0a4dbae607262e076c2, type: 3}
-    m_FontSize: 100
+    m_FontSize: 80
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -948,8 +948,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -238.33, y: -285}
-  m_SizeDelta: {x: 400, y: 100}
+  m_AnchoredPosition: {x: -200, y: -280}
+  m_SizeDelta: {x: 300, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1420580815
 MonoBehaviour:
@@ -1079,7 +1079,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 292.45}
+  m_AnchoredPosition: {x: 0, y: 290}
   m_SizeDelta: {x: 271, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1646105013
@@ -1154,8 +1154,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.0044776, y: 7.255}
-  m_SizeDelta: {x: 876.6512, y: 684.51}
+  m_AnchoredPosition: {x: 0.000026703, y: -0.0000073314}
+  m_SizeDelta: {x: 800, y: 434.9091}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2076341038
 MonoBehaviour:
@@ -1179,7 +1179,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: bbd724909a3af0a4dbae607262e076c2, type: 3}
-    m_FontSize: 25
+    m_FontSize: 20
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -1190,38 +1190,44 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Caio Cerano Silva 11201822405
+  m_Text: 'Members
 
-    Igor Iwashita de Oliveira 11201822406
+
+    Caio Cerano Silva 11201822405
+
+    Igor Iwashita de Oliveira
+    11201822406
 
 
     Assets
 
 
-    Font
-    - Pixeboy By AbasCreative (https://www.fontspace.com/pixeboy-font-f43730)
+    Font - Pixeboy By AbasCreative
+
+    https://www.fontspace.com/pixeboy-font-f43730
 
 
     Background
-    Bricks- Pixel Art Brick Tile By Drewwayne
+    Bricks - Pixel Art Brick Tile By Drewwayne
 
     https://www.deviantart.com/drewwayne/art/Pixel-Art-Brick-Tile-643449248
 
 
     Collectables 
-    and menus - caio cerano
+    and menus - Caio Cerano
 
     https://imgur.com/a/A54LuJG
 
     https://imgur.com/a/yqgg1UG
 
 
-    Second
-    enemy - OcO https://itch.io/queue/c/844603/asset-packs?game_id=466748
+    Characters
+    and tiles - Elthen
+
+    https://elthen.itch.io
 
 
-    Soundtrack
-    - Marllon Silva
+    Soundtrack - Marllon Silva
 
     https://www.youtube.com/watch?v=5bn3Jmvep1k'
 --- !u!222 &2076341039
